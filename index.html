@@ -776,10 +776,6 @@
                 <span>Subtotal (<span id="total-qty">0</span> piezas):</span>
                 <span id="subtotal-price">$0.00</span>
             </div>
-            <div class="summary-row">
-                <span>Impuestos (7%):</span>
-                <span id="tax-price">$0.00</span>
-            </div>
             <div class="summary-row total">
                 <span>TOTAL:</span>
                 <span id="total-price">$0.00</span>
@@ -1237,13 +1233,11 @@
                 });
             }
 
-            const tax = subtotal * 0.07;
-            const total = subtotal + tax;
+            const total = subtotal;
 
             document.getElementById('cart-count').innerText = totalQty;
             document.getElementById('total-qty').innerText = totalQty;
             document.getElementById('subtotal-price').innerText = `$${subtotal.toLocaleString('es-MX', { minimumFractionDigits: 2 })}`;
-            document.getElementById('tax-price').innerText = `$${tax.toLocaleString('es-MX', { minimumFractionDigits: 2 })}`;
             document.getElementById('total-price').innerText = `$${total.toLocaleString('es-MX', { minimumFractionDigits: 2 })}`;
             checkoutBtn.disabled = cart.length === 0;
         }
@@ -1294,13 +1288,11 @@
                 totalQty += item.qty;
             });
 
-            const tax = subtotal * 0.07;
-            const total = subtotal + tax;
+            const total = subtotal;
 
             msg += `%0A*Resumen de Compra:*%0A`;
             msg += `Piezas totales: ${totalQty}%0A`;
             msg += `Subtotal: $${subtotal.toLocaleString('es-MX', { minimumFractionDigits: 2 })}%0A`;
-            msg += `Impuestos (7%): $${tax.toLocaleString('es-MX', { minimumFractionDigits: 2 })}%0A`;
             msg += `*TOTAL: $${total.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN*%0A%0A`;
             msg += `Quedo a la espera de sus indicaciones para el pago.`;
 
